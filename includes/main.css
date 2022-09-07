@@ -1,0 +1,177 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    border: border-box;
+    overflow-x: hidden;
+}
+
+#main-section {    
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
+    box-sizing: border-box;
+    height: auto;
+    color: white;
+    display:flex;
+    background-color: rgb(35,35,45);
+}
+
+.video-block {
+    scroll-behavior: smooth;
+}
+
+.video-player {
+    width: 70%;
+    height: 700px;
+}
+
+.video-params {
+    text-decoration: none;
+    color: white;
+}
+
+.video-params:hover {
+    color: white;
+    font-size: 1.075em;
+}
+
+.episode-button {
+    white-space: nowrap;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    -webkit-animation: moving 5s infinite;
+    animation: moving 5s infinite;
+}
+
+.episode-button button {
+    background-color: rgb(45,45,55);
+    width: 33%; 
+    height: 3rem;
+    word-wrap: break-word;
+}
+
+@keyframes moving {
+    from {transform: translateX(0px);}
+    to {transform: translateX(800px);}
+}
+
+.title {
+    position: relative;
+    width: 270px;
+    height: 200px;
+    display: flex;
+    margin: 0 0.8em 0 0;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s linear 0.3s;
+    -webkit-transition: all 0.2s linear 0.3s;    
+}
+
+.title div {
+    overflow: hidden;
+}
+
+.title img {
+    object-position: -30px 0;
+}
+
+.title-text {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 1.35em;
+    flex-direction: row;
+    flex-wrap: wrap;       
+}
+
+.title-text p {
+    height: auto;
+    width: 100%;
+}
+
+.genres {
+    font-size: 0.6em;
+    opacity: 0.6;
+    text-align: center;
+    align-self: flex-end;
+}
+
+#cover-title:hover {
+    font-size: 1.02em;
+}
+
+.title-a:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.arrow {
+    width: auto !important; 
+    height: 40px;
+    opacity: 0.75; 
+    margin-top: 0.5rem !important;  
+    cursor: pointer;
+}
+
+.arrow:hover {
+    opacity: 1;
+}
+
+#videos-overview {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 54vh;
+    width: 85%;
+}
+
+#videos-overview::-webkit-scrollbar {
+    display: none;
+}
+
+#videos-overview .title {
+    width: 100% !important;
+}
+
+#videos-overview .title img {
+    object-position: -80px 0 !important;
+}
+
+#searcher {
+    width: 60%;
+    color: white;
+    background: transparent;
+}
+
+#register-login input{
+    background: rgb(30, 30, 30);
+    color: #fff;
+    border: 0;
+    padding: 0.7rem;
+}
+
+a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.watched-btn {
+    background-color: rgb(32,32,37) !important; 
+}
+
+.watching-btn {
+    background: rgb(29, 29, 37) !important;
+}
+
+.active-episode-btn {
+    text-decoration: underline !important;
+}
