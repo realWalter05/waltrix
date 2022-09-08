@@ -130,7 +130,7 @@ html, body {
 #videos-overview {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 54vh;
+    height: 52vh;
     width: 85%;
 }
 
@@ -174,4 +174,10 @@ a {
 
 .active-episode-btn {
     text-decoration: underline !important;
+}
+
+#remember-me-checkbox:checked {
+    border-color: #fff;
+    background-color:#fff;
+    opacity: 0.75;
 }

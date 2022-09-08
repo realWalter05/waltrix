@@ -45,7 +45,11 @@
   		</div>	
 		<div class="form-group mb-2 m-auto">
     		<label for="login-password">Password</label>
-    		<input type="password" class="form-control" id="login-password" name="log-password" placeholder="aBc123">
+    		<input type="password" class="form-control" id="login-password" name="log-password" placeholder="verystrongpwd...">
+			<div class="form-check mt-2">
+  				<input class="form-check-input" type="checkbox" name="remember-me" id="remember-me-checkbox">
+  				<label class="form-check-label m-1" for="remember-me-checkbox">Remember me</label>
+			</div>			
 			<input type="submit" name="login" value="Login to Waltrix" class="mt-3 btn btn-light form-control">
   		</div>	
 	</form>			

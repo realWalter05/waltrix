@@ -18,6 +18,7 @@
 <?php 
 if (isset($_GET["logout"])) {
 	session_destroy();
+	setcookie("cookie_token", "", time()-3600);	
 	header("Location: http://".$_SERVER['HTTP_HOST'].$formaction);
 	exit;  	
 }
@@ -32,8 +33,18 @@ if (isset($_GET["reset"])) {
 		$stmt = $conn->prepare($query);
 		$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
 		if ($stmt->execute()) {
-			header("Location: http://".$_SERVER['HTTP_HOST'].$formaction);
-			exit;  			
+			$query = "DELETE FROM `watching_series` WHERE user_id=?";
+			$stmt = $conn->prepare($query);
+			$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
+			if ($stmt->execute()) {
+				$query = "DELETE FROM `watching_movies` WHERE user_id=?";
+				$stmt = $conn->prepare($query);
+				$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
+				if ($stmt->execute()) {
+					header("Location: http://".$_SERVER['HTTP_HOST'].$formaction);
+					exit;  			
+				}					
+			}			
 		}					
 	}	
 }

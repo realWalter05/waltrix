@@ -9,7 +9,10 @@
                 $title_data = $series_data[(int)$_GET["e"]-1];
                 $url_data = "video_id=" . $_GET["id"] . "&s=" . $_GET["s"] . "&e=" . $_GET["e"] . "&tmdb=1";
                 echo("<div class='row'>");
-                echo('<iframe allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');
+                if(isset($_GET["ads"]))
+                    echo('<iframe allowfullscreen="" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');
+                else
+                    echo('<iframe allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');
                 echo("<section class='col-4 p-5 mt-5 h-100'>");
                 echo("<h2>".$title_data["name"]."</h2>");
                 echo("<div class = 'row'><span class='col'>S" .$title_data["season_number"]. "E" . $title_data["episode_number"] . "</span>");
@@ -83,7 +86,11 @@
                 $url_data = "video_id=" . $_GET["id"] . "&tmdb=1";
 
                 echo("<div class='row'>");
-                echo('<iframe allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');
+                if(isset($_GET["ads"]))
+                    echo('<iframe allowfullscreen="" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');            
+                else
+                    echo('<iframe allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" class="col video-player" src="includes/php/player.php?'.$url_data.'"></iframe>');
+                                
                 echo("<section class='col-4 p-5 mt-5 h-100'>");
                 echo("<h2>".$title_data["title"]."</h2>");
                 echo("<div class = 'row'><span class='col'>" . explode("-", $title_data["release_date"])[0] . '</span>');

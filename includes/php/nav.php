@@ -21,6 +21,33 @@
                 // User logged
                 echo('<a href="index.php?p=account" class="text-decoration-none text-white">');
                 echo($_SESSION["user"]['username'].'</a>');
+            } else if(isset($_GET["cookie-token"])) {
+                # Login based on remember me btn
+                $conn = get_conn();
+
+                $sql = "SELECT * FROM users WHERE cookie-token=?";
+                $stmt = $conn->prepare($sql); 
+                $stmt->bind_param("s", $_GET["cookie-token"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+    
+                if (password_verify($password, $_GET["cookie-token"])) {
+                    # Start session
+                    session_start();
+                    $_SESSION["user"] = $row;
+
+                    # Reset the cookie
+                    $random_hash = password_hash($row["user_id"] + microtime(), PASSWORD_DEFAULT);
+                    setcookie("cookie_token", $random_hash);
+
+                    # Insert its hash into the database
+                    $hash = password_hash($random_hash, PASSWORD_DEFAULT);
+                    $query = "UPDATE `users` SET cookie_token=? WHERE user_id=?;";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("si", $hash, $row["user_id"]);
+                    $stmt->execute();                    
+                }
             } else {
                 echo('<a href="index.php?p=register" class="text-decoration-none text-white">');
                 echo('Register/Login</a>');

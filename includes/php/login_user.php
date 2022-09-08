@@ -1,6 +1,10 @@
 <?php
 require_once './database.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (isset($_GET["login"])) {
     $email = isset($_GET["log-email"]) ? $_GET["log-email"] : "";
     $password = isset($_GET["log-password"]) ? $_GET["log-password"] : "";
@@ -23,6 +27,19 @@ if (isset($_GET["login"])) {
                 session_start();
 
                 $_SESSION["user"] = $row;
+                if(isset($_GET["remember-me"])) {
+                    # Store login token to cookie
+                    $random_hash = password_hash($row["user_id"] + microtime(), PASSWORD_DEFAULT);
+                    setcookie("cookie_token", $random_hash);
+
+                    # Insert its hash into the database
+                    $hash = password_hash($random_hash, PASSWORD_DEFAULT);
+                    $query = "UPDATE `users` SET cookie_token=? WHERE user_id=?;";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("si", $hash, $row["user_id"]);
+                    $stmt->execute();
+                }
+
                 # Password correct 
                 $stmt->close();
                 $conn->close();
