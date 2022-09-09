@@ -64,8 +64,8 @@
                     }
                 }
 
-                echo('<a href="http://waltrix.cz/index.php?p=video&id=' . $_GET["id"] . "&s=" . $last_season . "&e=" . $last_episode . '";"><img src="./img/left-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
-                echo('<a href="http://waltrix.cz/index.php?p=video&id=' . $_GET["id"] . "&s=" . $next_season . "&e=" . $next_episode . '";"><img src="./img/right-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
+                echo('<a href=http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id=' . $_GET["id"] . "&s=" . $last_season . "&e=" . $last_episode . '";"><img src="./img/left-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
+                echo('<a href="http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id=' . $_GET["id"] . "&s=" . $next_season . "&e=" . $next_episode . '";"><img src="./img/right-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
                 echo("</div>");
                 echo("</section>");
                 echo("</div>");   

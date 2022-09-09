@@ -1,6 +1,6 @@
 <section class="p-5 shadow-lg flex" style="width: 18vw; margin:0; background-color: rgb(32,32,37);">
 <section style="position: fixed; width: 18vw;">
-<a href="/" style="width: 80%;" class="d-flex pb-2 mb-3 border-bottom display-5 text-white text-decoration-none">Waltrix</a>
+<a href="/" style="width: 80%;" class="d-flex logo-font pb-2 mb-3 border-bottom display-5 text-white text-decoration-none">Waltrix</a>
 <ul class="list-unstyled py-2 px-4 d-flex flex-column" style="font-size: 1.1em">
     <li class="mb-1">Watch now</li>
     <li class="mb-1">Best movies</li> 	
@@ -39,7 +39,7 @@
 
                     # Reset the cookie
                     $random_hash = password_hash($row["user_id"] + microtime(), PASSWORD_DEFAULT);
-                    setcookie("cookie_token", $random_hash);
+                    setcookie("cookie_token", $random_hash, 6*30*24*3600);
 
                     # Insert its hash into the database
                     $hash = password_hash($random_hash, PASSWORD_DEFAULT);

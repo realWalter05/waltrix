@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "logo";
+    src: URL('img/bubble.ttf');
+}
+
+.logo-font {
+    font-size: logo !important;
+}
+
 html, body {
     margin: 0;
     padding: 0;

@@ -30,7 +30,7 @@ if (isset($_GET["login"])) {
                 if(isset($_GET["remember-me"])) {
                     # Store login token to cookie
                     $random_hash = password_hash($row["user_id"] + microtime(), PASSWORD_DEFAULT);
-                    setcookie("cookie_token", $random_hash);
+                    setcookie("cookie_token", $random_hash, 6*30*24*3600);
 
                     # Insert its hash into the database
                     $hash = password_hash($random_hash, PASSWORD_DEFAULT);

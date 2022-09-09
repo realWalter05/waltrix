@@ -1,7 +1,7 @@
 <?php 
 
 function get_conn() {
-    $conn = new mysqli("localhost","root","@A&i#159324786","waltrix");
+    $conn = new mysqli("localhost","root","","waltrix");
 
     // Check connection
     if ($conn -> connect_errno) {

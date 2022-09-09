@@ -35,7 +35,7 @@ function AddToWatched(user_id, tmdb_id, season, episode) {
             const runtime = parseInt(document.getElementById("video-runtime").textContent.split(" ")[0]);
             
             // Get previous watching time
-            let watching_time = 1;
+            let watching_time = 0.2;
             let previous_percentage_to_end = "a";
             if (season == "" && episode == "") {
                 $.ajax({
@@ -143,8 +143,8 @@ function AddToWatched(user_id, tmdb_id, season, episode) {
                         });                    
                     }
                 }
-                watching_time += 1;
-            }, 60000);
+                watching_time += 0.2;
+            }, 10000);
         }
     }, 100);
 }

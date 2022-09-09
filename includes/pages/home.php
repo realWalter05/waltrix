@@ -29,28 +29,68 @@
 		<section class="row d-flex" style="margin: 0; padding: 0;">
 			<section class="video-block d-flex col overflow-hidden justify-content-left p-3 mb-4">
 				<?php 
+					$no_continue_watching = True;
 					if ($_SESSION["user"]) {
-						$conn = get_conn();
-						$query = "SELECT season, max(episode), tmdb_id from watching_series where (season) in (select max(season) from watching_series group by tmdb_id) AND user_id=? group by season, tmdb_id;";
-						$stmt = $conn->prepare($query);
-						$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
-						if ($stmt->execute()) {
-							$result = $stmt->get_result();
-							while ($row = $result->fetch_assoc()) {
-								show_series_title(get_data_about_title(get_title_data($row["tmdb_id"], "tv")), $row["season"], $row["max(episode)"]);
-							}
-						}		
-
+						$conn = get_conn(); 	
 						$query = "SELECT * FROM watching_movies WHERE user_id=?";
 						$stmt = $conn->prepare($query);
 						$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
 						if ($stmt->execute()) {
 							$result = $stmt->get_result();
 							while ($row = $result->fetch_assoc()) {
+								if ($no_continue_watching == True)
+									$no_continue_watching = False;								
 								show_title(get_data_about_title(get_title_data($row["tmdb_id"], "movie")));
 							}		
 						}
-					} else {
+
+						$series_watching = [];
+						$query = "SELECT season, max(episode), tmdb_id from watching_series where (season, tmdb_id) in (select max(season), tmdb_id from watching_series group by tmdb_id) AND user_id=? group by season, tmdb_id;";
+						$stmt = $conn->prepare($query);
+						$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
+						if ($stmt->execute()) {
+							$result = $stmt->get_result();
+							while ($row = $result->fetch_assoc()) {
+								if ($no_continue_watching == True)
+									$no_continue_watching = False;
+								$s = get_data_about_title(get_title_data($row["tmdb_id"], "tv"));
+								$s["season"] = $row["season"];
+								$s["episode"] = $row["max(episode)"];									
+								array_push($series_watching, $s);
+							}
+						}		
+
+						$series_watched = [];
+						$query = "SELECT season, max(episode), tmdb_id from watched_series where (season, tmdb_id) in (select max(season), tmdb_id from watched_series group by tmdb_id) AND user_id=? group by season, tmdb_id;";
+						$stmt = $conn->prepare($query);
+						$stmt->bind_param("i", $_SESSION["user"]["user_id"]);
+						if ($stmt->execute()) {
+							$result = $stmt->get_result();
+							while ($row = $result->fetch_assoc()) {
+								if ($no_continue_watching == True)
+									$no_continue_watching = False;
+								$s = get_data_about_title(get_title_data($row["tmdb_id"], "tv"));
+								$s["season"] = $row["season"];
+								$s["episode"] = $row["max(episode)"];									
+								array_push($series_watched, $s);
+							}
+						}			
+						
+						# Show only series watching if its newer than watched episode
+						foreach ($series_watched as $watched) {
+							foreach ($series_watching as $watching) {
+								if ($watched["id"] == $watching["id"]) {
+									if (($watching["episode"] > $watched["episode"] && $watching["season"] == $watched["season"]) ||
+										$watching["season"] > $watched["season"]) {
+										show_series_title($watching, $watching["season"], $watching["episode"]);
+										continue 2;
+									}
+								}
+							}	
+							show_series_title($watched, $watched["season"], $watched["episode"]);
+						}
+					} 
+					if (!isset($_SESSION["user"]) || $no_continue_watching) {
 						show_title(get_data_about_title(get_title_data("456", "tv")));
 						show_title(get_data_about_title(get_title_data("2288", "tv")));
 						show_title(get_data_about_title(get_title_data("2710", "tv")));
@@ -98,4 +138,3 @@
 		</section>			            
 	</section>
 </section>
-
