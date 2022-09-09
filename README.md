@@ -2,4 +2,4 @@
 Better than Netflix
 cause it free lol
 
-intellectual property is outdated anyway
+intellectual property is outdated concept anyway
