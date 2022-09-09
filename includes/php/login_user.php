@@ -1,10 +1,6 @@
 <?php
 require_once './database.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (isset($_GET["login"])) {
     $email = isset($_GET["log-email"]) ? $_GET["log-email"] : "";
     $password = isset($_GET["log-password"]) ? $_GET["log-password"] : "";
