@@ -137,7 +137,7 @@ function get_trending_titles($type) {
 }
 
 function show_title($title) {
-    echo("<a class='title-a' href='/index.php?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>");
+    echo("<a class='title-a' href='/?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>");
     echo("<div class='title'>");
     echo("<div>");
     echo('<div class="title-text text-center">');
@@ -161,7 +161,7 @@ function show_title($title) {
 }
 
 function show_series_title($title, $season, $episode) {
-    echo("<a class='title-a' href='/index.php?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=$season&e=$episode" : "") . "'>");
+    echo("<a class='title-a' href='/?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=$season&e=$episode" : "") . "'>");
     echo("<div class='title'>");
     echo("<div>");
     echo('<div class="title-text text-center">');

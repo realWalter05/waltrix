@@ -57,10 +57,10 @@ if (isset($_GET["user_id"]) && isset($_GET["tmdb_id"])) {
 
     if(isset($_GET["return"])) {
         if (isset($_GET["s"]) && isset($_GET["e"])) {
-            header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=video&id=$tmdb_id&s=".$_GET["s"]."&e=".$_GET["e"]);
+            header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=video&id=$tmdb_id&s=".$_GET["s"]."&e=".$_GET["e"]);
             exit;            
         }
-        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=video&id=$tmdb_id");
+        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=video&id=$tmdb_id");
         exit;    
     }
 }

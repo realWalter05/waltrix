@@ -19,7 +19,7 @@
         <?php
             if (isset($_SESSION['user'])) {
                 // User logged
-                echo('<a href="index.php?p=account" class="text-decoration-none text-white">');
+                echo('<a href="?p=account" class="text-decoration-none text-white">');
                 echo($_SESSION["user"]['username'].'</a>');
             } else if(isset($_GET["cookie-token"])) {
                 # Login based on remember me btn
@@ -49,7 +49,7 @@
                     $stmt->execute();                    
                 }
             } else {
-                echo('<a href="index.php?p=register" class="text-decoration-none text-white">');
+                echo('<a href="?p=register" class="text-decoration-none text-white">');
                 echo('Register/Login</a>');
             }
         ?>

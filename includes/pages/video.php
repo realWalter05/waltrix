@@ -64,8 +64,8 @@
                     }
                 }
 
-                echo('<a href=http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id=' . $_GET["id"] . "&s=" . $last_season . "&e=" . $last_episode . '";"><img src="./img/left-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
-                echo('<a href="http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id=' . $_GET["id"] . "&s=" . $next_season . "&e=" . $next_episode . '";"><img src="./img/right-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
+                echo('<a href=http://'.$_SERVER['HTTP_HOST'].'/?p=video&id=' . $_GET["id"] . "&s=" . $last_season . "&e=" . $last_episode . '";"><img src="./img/left-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
+                echo('<a href="http://'.$_SERVER['HTTP_HOST'].'/?p=video&id=' . $_GET["id"] . "&s=" . $next_season . "&e=" . $next_episode . '";"><img src="./img/right-arrow.png" alt="Next" style="height: 25px;cursor: pointer;"/></a>');
                 echo("</div>");
                 echo("</section>");
                 echo("</div>");   
@@ -169,7 +169,7 @@
                     foreach ($seasons as $season) {
                         if ($season["name"] == "Specials")
                             continue;
-                        echo('<li><a class="dropdown-item" href="http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id='. $_GET["id"] .'&s='. $season_number .'&e=1">'.$season["name"].'</a></li>');
+                        echo('<li><a class="dropdown-item" href="http://'.$_SERVER['HTTP_HOST'].'/?p=video&id='. $_GET["id"] .'&s='. $season_number .'&e=1">'.$season["name"].'</a></li>');
                         $season_number += 1;
                     }
                     echo('</ul>');
@@ -186,7 +186,7 @@
                         } else if (in_array($episode_number, $watching_episodes)) {
                             $btnMark = $btnMark."watching-btn";
                         }
-                        echo('<a href="http://'.$_SERVER['HTTP_HOST'].'/index.php?p=video&id='. $_GET["id"] .'&s='. $_GET["s"] .'&e='.$episode_number.'" class="episode-button"><button class="btn '.$btnMark.' btn-dark"><b>E' . $episode_number . ": </b>" . $episode["name"] . '</button><a/>');
+                        echo('<a href="http://'.$_SERVER['HTTP_HOST'].'/?p=video&id='. $_GET["id"] .'&s='. $_GET["s"] .'&e='.$episode_number.'" class="episode-button"><button class="btn '.$btnMark.' btn-dark"><b>E' . $episode_number . ": </b>" . $episode["name"] . '</button><a/>');
                         $episode_number += 1;
                     }
                 } else {

@@ -7,7 +7,7 @@ if (isset($_GET["registration"])) {
     $password = isset($_GET["reg-password"]) ? $_GET["reg-password"] : "";
     if (empty($name) || empty($email) || empty($password)) {
         # Some value not filled
-        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&register-msg=empty_values&reg-username=$name&reg-email=$email");
+        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&register-msg=empty_values&reg-username=$name&reg-email=$email");
         exit;        
     } else {
         # Hash the password
@@ -44,12 +44,12 @@ if (isset($_GET["registration"])) {
         
         stmt->close();
         $conn->close();
-        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&register-msg=system_err&reg-username=$name&reg-email=$email");
+        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&register-msg=system_err&reg-username=$name&reg-email=$email");
         exit;         
     }
 
 } else {
     # Unauthorized access
-    header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&register-msg=system_err&reg-username=$name&reg-email=$email");
+    header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&register-msg=system_err&reg-username=$name&reg-email=$email");
     exit;
 }

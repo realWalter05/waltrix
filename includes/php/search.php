@@ -8,7 +8,7 @@ if (isset($_GET["query"])) {
         $title = get_data_about_title($result);
         if (!$title["img"])
             continue;        
-        $html_code = $html_code."<a class='title-a' href='/index.php?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>";
+        $html_code = $html_code."<a class='title-a' href='/?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>";
         $html_code = $html_code."<div class='title'>";
         $html_code = $html_code."<div>";
         $html_code = $html_code.'<div class="title-text text-center">';

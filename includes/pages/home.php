@@ -1,7 +1,7 @@
 <section style="width: 82vw; margin: 0; padding: 0;">
 	<?php 
 	$title = get_data_about_title(get_title_data("60059", "tv"));
-	echo("<a id='cover-title' href='/index.php?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>");
+	echo("<a id='cover-title' href='/?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>");
 	echo("<div class='title' style='width: 82vw; margin:0; padding:0; height: 30vw;'>");
 	echo("<div>");
 	echo('<div class="title-text text-center d-self justify-content-center align-items-center">');

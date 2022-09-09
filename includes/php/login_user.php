@@ -10,7 +10,7 @@ if (isset($_GET["login"])) {
     $password = isset($_GET["log-password"]) ? $_GET["log-password"] : "";
     if (empty($email) || empty($password)) {
         # Some value not filled
-        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&login-msg=empty_values&log-email=$email");
+        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&login-msg=empty_values&log-email=$email");
         exit;        
     } else {
             $conn = get_conn();
@@ -48,18 +48,18 @@ if (isset($_GET["login"])) {
             } else {
                 $stmt->close();
                 $conn->close();
-                header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&login-msg=wrong_pwd&log-email=$email");
+                header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&login-msg=wrong_pwd&log-email=$email");
                 exit;
             }
         
         stmt->close();
         $conn->close();
-        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&login-msg=system_err&log-email=$email");
+        header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&login-msg=system_err&log-email=$email");
         exit;         
     }
 
 } else {
     # Unauthorized access
-    header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/index.php?p=register&login-msg=system_err&log-email=$email");
+    header("Location: http://".$_SERVER['HTTP_HOST'].$formaction."/?p=register&login-msg=system_err&log-email=$email");
     exit;
 }

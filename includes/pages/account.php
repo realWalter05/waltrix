@@ -10,8 +10,8 @@
     		<input type="email" class="form-control" id="register-email" readonly value="<?php echo($_SESSION["user"]["email"]); ?>">
   		</div>		
 		<div class="row">
-			<a class="col" href="index.php?p=account&logout">Odhlásit se</a> 
-			<a class="col" href="index.php?p=account&reset" style="text-align: end;" href="#">Vymazat historii</a>
+			<a class="col" href="?p=account&logout">Odhlásit se</a> 
+			<a class="col" href="?p=account&reset" style="text-align: end;" href="#">Vymazat historii</a>
 		<div>
 	</section>	
 </section>
