@@ -139,7 +139,7 @@ html, body {
 #videos-overview {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 52vh;
+    flex-grow: 1;
     width: 85%;
 }
 
@@ -189,4 +189,121 @@ a {
     border-color: #fff;
     background-color:#fff;
     opacity: 0.75;
+}
+
+#main {
+    width: 82vw; 
+    margin: 0; 
+    padding: 0;
+}
+
+#cover-image {
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    height: 30vw;
+}
+
+#cover-image img {
+    width: 105%;
+}
+
+
+#cover-image-text {
+    margin-top: 180px; 
+    font-size: 1.2em; 
+}
+
+#register-login {
+    width: 82vw;
+}
+
+#video-section {
+    width: 83vw;
+}
+
+@media only screen and (max-width: 1200px) {
+    #main-section {
+        display: block;
+    }
+
+    #video-section {
+        width: 100vw;
+        margin-top: 6rem;
+    }
+
+    #video-section .row {
+        display: block;
+    }
+
+    #video-section .row section {
+        width: 100vw;
+        height: auto !important;
+    }    
+
+    #cover-image {
+        height: 45vh;
+        width: 100vw;
+    }
+
+    #register-login {
+        display: block !important;
+        width: 100vw;
+        margin-top: 6rem !important;
+
+    }
+
+    #register-login section {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    #register-login form {
+        margin: auto;
+        padding: 0 !important;
+    }
+
+    #cover-image div {
+        width: 100vw;
+    }    
+
+    #cover-image .title-text {
+        z-index: 500;
+    }
+
+    #cover-image img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    #cover-image-text {
+        margin-top: 5%; 
+    }    
+
+    #videos-overview {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        flex-grow: 0;
+        width: 85%;
+    }
+
+    .border-bottom {
+        border: 0 !important;
+    }
+
+
+    #main {
+        display: block;
+        margin-top: 6rem !important;
+        width: 100vw; 
+        margin: 0; 
+        padding: 0;
+    } 
+}
+
+@media only screen and (max-width: 500px) {
+    #cover-image img {
+        object-position: -150px 0;
+    }
 }

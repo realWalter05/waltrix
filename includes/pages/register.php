@@ -1,4 +1,4 @@
-<section id="register-login" class="mt-5 p-5 d-flex flex text-white row" style="width: 82vw;">
+<section id="register-login" class="mt-5 p-5 d-flex flex text-white row">
 	<form class="p-5 col" action="/includes/php/register_user.php" method="GET">
 		<h2 class="text-center display-5">Register</h2>
 		<?php 

@@ -1,0 +1,128 @@
+#navbar-container {
+    height: 100vh;
+    display: flex;
+    width: 18vw; 
+    margin:0; 
+    background-color: rgb(32,32,37);
+}
+
+#navbar {
+    padding: 4rem;
+    position: fixed; 
+    width: 18vw; 
+    max-height: 100vh;
+    height: 100vh;
+}
+
+#nav-collapse {
+    font-size: 1.1em;
+    height: 100%;
+}
+
+#navbar-toggle {
+    display: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(100%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+#logo {
+    display:flex; 
+    margin-bottom: 1rem; 
+    border-bottom: 1px solid #fff; 
+    color: white;
+    text-decoration: none;
+}
+
+.nav-visibility {
+    display: flex;
+}
+
+.nav-visible {
+    display: flex;
+    height: 100vh;
+}
+
+.register-div {
+    font-size: 1.15em;
+    margin-bottom: 4rem;
+    display: flex;
+}
+
+@media only screen and (max-width: 1200px) {
+    .title-container-nav {
+        height: 7rem;
+        display: flex !important;
+        justify-content: center;
+        vertical-align: middle;
+    }
+
+    .register-div {
+        margin: 1rem 0 0 0;
+    }    
+
+    #searcher {
+        width: 50%;
+    }
+
+    #videos-overview {
+        width: 50%;
+        max-height: 30rem;
+    }
+
+    #logo {
+        border-bottom: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-visibility {
+        display: none;
+    }    
+
+    #nav-collapse {
+        justify-content: center;
+        align-items: center;
+    }
+
+    #navbar-toggle {
+        display: block;
+    }
+
+    #navbar-container {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: auto;
+        background-color: rgb(32,32,37);
+        text-align: center;
+        height: 20px;
+    }
+
+    #navbar {
+        z-index: 10000;
+        width: 100vw;
+        background-color: rgb(32,32,37);
+        text-align: center;
+        height: auto;
+        padding: 0;
+    }
+}
+    
+
+@media only screen and (max-width: 1600px) and (min-width: 1201px)  {
+    #navbar {
+        padding: 4rem 2rem 5rem 2rem;
+    }
+
+    #nav-collapse {
+         width: 100%;
+         padding: 0 !important;
+         margin: 0;
+    }
+}
+    

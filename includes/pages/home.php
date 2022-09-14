@@ -1,11 +1,11 @@
-<section style="width: 82vw; margin: 0; padding: 0;">
+<section id="main">
 	<?php 
 	$title = get_data_about_title(get_title_data("60059", "tv"));
 	echo("<a id='cover-title' href='/?p=video&id=" . $title['id'] . (($title["type"] == "tv") ? "&s=1&e=1" : "") . "'>");
-	echo("<div class='title' style='width: 82vw; margin:0; padding:0; height: 30vw;'>");
+	echo("<div class='title' id='cover-image'>");
 	echo("<div>");
 	echo('<div class="title-text text-center d-self justify-content-center align-items-center">');
-	echo('<p style="margin-top: 180px; font-size: 1.2em;" class="px-4">'.$title["name"].'<br/><span style="font-size: 1em; opacity: 0.9;">'.$title["release"].'</span></p>');
+	echo('<p id="cover-title-text" class="px-4">'.$title["name"].'<br/><span style="font-size: 1em; opacity: 0.9;">'.$title["release"].'</span></p>');
 	echo('<p class="genres">');
 	foreach ($title["genres"] as $genre) {
 		if (is_array($genre)) {
@@ -18,7 +18,7 @@
 	}
 	echo('</p>');
 	echo("</div>");
-	echo('<img src="https://image.tmdb.org/t/p/original/'.$title["img"]. '" style="width: 105%;"/>');
+	echo('<img src="https://image.tmdb.org/t/p/original/'.$title["img"]. '"/>');
 	echo "</div>";
 	echo "</div>";
 	echo "</a>";
@@ -138,3 +138,4 @@
 		</section>			            
 	</section>
 </section>
+<script>CheckMobile();</script>

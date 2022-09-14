@@ -172,7 +172,7 @@ function GetWatchedTime(user_id, tmdb_id, season, episode) {
             data: { 
                 user_id: user_id,
                 tmdb_id: tmdb_id,
-                s: season,
+                s: season, 
                 e: episode                    
             },
             success: function(response) { 
@@ -185,12 +185,57 @@ function GetWatchedTime(user_id, tmdb_id, season, episode) {
     }      
 }
 
-window.onload = function() {
-    setTimeout(function() {
-      if ( typeof(window.google_jobrunner) === "undefined" ) {
-        console.log("ad blocker installed");
-      } else {
-        console.log("no ad blocking found.");
-      }
-    }, 10000);
-  };
+function AddSandbox() {
+    window.onload = function() {
+        setTimeout(function() {
+            if ($("#adblock").css("display") == "hidden" || $("#adblock").css("display") == "none") {
+                $(".video-player").attr("sandbox","allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
+            }
+        }, 2000 )
+    }
+}
+
+function DeleteSandbox() {
+    $(".video-player").removeAttr("sandbox");
+}
+
+function HandleMenu() {
+    const nav = document.getElementById("nav-collapse");
+    if (nav.classList.contains("nav-visibility")) {
+        nav.classList.remove("nav-visibility");
+        nav.classList.add("nav-visible");
+    } else {
+        nav.classList.remove("nav-visible");
+        nav.classList.add("nav-visibility");
+    }
+}
+
+function CheckMobile() {
+    if (typeof screen.orientation !== 'undefined') {
+        const videoBlocks = document.getElementsByClassName("video-block");
+        for (const block of videoBlocks) {
+            console.log("wel");
+            AddSwipeControl(block);
+        }
+    }
+}
+
+function AddSwipeControl(block) {
+    console.log(block);
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    block.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX
+    })
+
+    block.addEventListener('touchend', e => {
+      	touchendX = e.changedTouches[0].screenX
+    	if (touchendX > touchstartX)  {
+    		ScrollVideos(block.parentElement.getElementsByClassName("arrow")[0]);
+    	} else {
+    		ScrollVideos(block.parentElement.getElementsByClassName("arrow")[1]);
+    	}
+    })
+}
+
