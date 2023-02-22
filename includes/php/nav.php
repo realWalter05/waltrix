@@ -7,11 +7,11 @@
         </button>
         </div>
     <ul class="nav-visibility list-unstyled py-2 px-4 flex-column" data-toggle="collapse" id="nav-collapse">
-        <li class="mb-1">Not working yet</li>
-        <li class="mb-1">Best movies</li> 	
-        <li class="mb-1">IMDB top</li>
-        <li class="mb-1">Continue</li> 	 					  
-        <li class="mb-1">Re-watch</li> 	 					  
+        <a href="/"><li class="mb-1">Not working yet</li></a>
+        <a href="?p=top_movies"><li class="mb-1">Best movies</li></a>
+        <a href="/"><li class="mb-1">IMDB top</li></a>
+        <a href="/"><li class="mb-1">Continue</li></a>
+        <a href="/"><li class="mb-1">Re-watch</li></a>
         <input id="searcher" type="text" placeholder="Searcher..." class="form-control mb-1"/>
         <div id="videos-overview"></div>
         <div class="register-div">

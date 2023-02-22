@@ -62,7 +62,7 @@ function get_genre_from_id($id) {
         "Western" => 37,
     ];
     $genres = array_flip($genres);
-    return $genres[$id];
+    return $genres[$id] ?? null;
 }
 
 
@@ -71,15 +71,27 @@ function get_title_data($id, $type) {
     return $data;
 }
 
+
+function get_top_movies() {
+    $answer = make_api_call("https://api.themoviedb.org/3/movie/top_rated");
+    $trending = [];
+    foreach ($answer["results"] as $title) {
+        $title_info = get_data_about_title($title);
+        array_push($trending, $title_info);
+    }
+    return $trending;    
+}
+
+
 function get_series_data($id, $season, $episode) {
     $data = make_api_call("https://api.themoviedb.org/3/tv/$id/season/$season");
     return $data["episodes"];
 }
 
 function get_data_about_title($title) {
-    $id = $title["id"];
-    $img = $title["backdrop_path"];
-    $media = $title["media_type"];
+    $id =  isset($title["id"]) ? $title["id"] : "";
+    $img = isset($title["backdrop_path"]) ? $title["backdrop_path"] : "";
+    $media = isset($title["media_type"]) ? $title["media_type"] : "";
     if(!$media && array_key_exists("seasons", $title)) {
         $media = "tv";
     }

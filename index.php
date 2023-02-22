@@ -28,7 +28,7 @@ require_once './includes/php/database.php';
 			$p = "home";
 			if (isset($_GET["p"])) {
 				# We got the page
-				if(preg_match('/^[a-zA-Z0-9]+$/', $_GET["p"])) {
+				if(preg_match('/^[a-zA-Z0-9_]+$/', $_GET["p"])) {
 					# Page has right letters
 					if (file_exists("./includes/pages/".$_GET["p"].".php")) {
 						# Page exists
